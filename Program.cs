@@ -72,7 +72,6 @@ namespace _2DRPGMap
                 Console.Write("#");
                 for (int y = 0; y < Columns; y++)
                 {
-                    ColourCode(x, y);
                     Console.Write(map[x, y]);
                 }
                 Console.BackgroundColor = ConsoleColor.Black;
@@ -87,15 +86,15 @@ namespace _2DRPGMap
             int bordersize = Columns * scale;
             Console.BackgroundColor = ConsoleColor.Black;
 
-            /* for (int g = 0; g < 1; g++)
-             {
-                 Console.Write("█");
-                 for (int r = 0; r < bordersize; r++)
-                 {
-                     Console.Write("█");
-                 }
-                 Console.Write("█");
-             }*/
+            for (int g = 0; g < 1; g++)
+            {
+                Console.Write("█");
+                for (int r = 0; r < bordersize; r++)
+                {
+                    Console.Write("█");
+                }
+                Console.Write("█");
+            }
 
             Console.WriteLine();
 
@@ -108,7 +107,6 @@ namespace _2DRPGMap
                     {
                         for (int z = 0; z < scale; z++)
                         {
-                            ColourCode(x, y);
                             Console.Write(map[x, y]);
                         }
                     }
@@ -127,31 +125,6 @@ namespace _2DRPGMap
                 Console.Write("█");
             }
             Console.WriteLine();
-        }
-
-        static void ColourCode(int x, int y)
-        {
-            switch (map[x, y])
-            {
-                case '^':
-                    Console.BackgroundColor = ConsoleColor.DarkGray;
-                    break;
-                case '`':
-                    Console.BackgroundColor = ConsoleColor.Green;
-                    break;
-                case '~':
-                    Console.BackgroundColor = ConsoleColor.Blue;
-                    break;
-                case '*':
-                    Console.BackgroundColor = ConsoleColor.DarkGreen;
-                    break;
-                case '█':
-                    Console.BackgroundColor = ConsoleColor.DarkRed;
-                    break;
-                default:
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    break;
-            }
         }
 
         static void PlayerChoice()
@@ -205,7 +178,7 @@ namespace _2DRPGMap
                     PlayerPosx--;
                 }
             }
-            else if (key.Key == ConsoleKey.F)
+            else if (key.Key == ConsoleKey.E)
             {
                 Scale++;
             }
