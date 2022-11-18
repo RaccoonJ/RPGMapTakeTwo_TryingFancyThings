@@ -10,8 +10,8 @@ namespace _2DRPGMap
 {
     internal class Program
     {
-        static int Scale;
-        static int origX, origY;
+        static int MapScale;
+        static int X, Y;
         static string Player;
         static int Rows, Columns;
         static ConsoleKeyInfo key;
@@ -39,11 +39,11 @@ namespace _2DRPGMap
 
         static void Main(string[] args)
         {
-            Scale = 1;
-            origX = Console.CursorLeft;
-            origY = Console.CursorTop;
-            PlayerPosy = origY + 4 * Scale;
-            PlayerPosx = origX + 8 * Scale;
+            MapScale = 1;
+            X = Console.CursorLeft;
+            Y = Console.CursorTop;
+            PlayerPosy = Y + 4 * MapScale;
+            PlayerPosx = X + 8 * MapScale;
             Player = "0";
             GameOver = false;
             Rows = map.GetLength(0);
@@ -54,12 +54,10 @@ namespace _2DRPGMap
             while (GameOver == false)
             {
                 Console.Clear();
-                DisplayMap(Scale);
-                PlayerDraw(Player, PlayerPosx, PlayerPosy);
+                DisplayMap(MapScale);
                 Console.WriteLine();
-                Console.SetCursorPosition(0, Rows * Scale + 2);
+                Console.SetCursorPosition(0, Rows * MapScale + 2);
                 PlayerChoice();
-                PlayerDraw(Player, PlayerPosx, PlayerPosy);
 
             }
         }
@@ -140,7 +138,7 @@ namespace _2DRPGMap
             else if (key.Key == ConsoleKey.W)
             {
                 PlayerPosy--;
-                Console.SetCursorPosition(0, Rows * Scale + 2);
+                Console.SetCursorPosition(0, Rows * MapScale + 2);
                 WallCheck(PlayerPosx, PlayerPosy);
                 if (moveRollBack == true)
                 {
@@ -180,13 +178,8 @@ namespace _2DRPGMap
             }
             else if (key.Key == ConsoleKey.E)
             {
-                Scale++;
+                MapScale++;
             }
-        }
-        static void PlayerDraw(string Player, int PlayerPosx, int PlayerPosy)
-        {
-            Console.SetCursorPosition(origX + PlayerPosx, origY + PlayerPosy);
-            Console.Write(Player);
         }
         static void WallCheck(int x, int y)
         {
@@ -215,5 +208,7 @@ namespace _2DRPGMap
                 }
             }
         }
+
+
+        }
     }
-}
