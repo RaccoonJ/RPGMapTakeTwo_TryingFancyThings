@@ -205,7 +205,7 @@ namespace _2DRPGMap
                     PlayerPosx--;
                 }
             }
-            else if (key.Key == ConsoleKey.E)
+            else if (key.Key == ConsoleKey.F)
             {
                 Scale++;
             }
